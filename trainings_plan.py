@@ -5,11 +5,10 @@ import datetime as date
 
 # Functions --------------------------
 
+
 # Function to adjust the current pace for the shorter distance
 def adjust_current_pace(pace, endurance_gap):
   return pace + endurance_gap * 0.005 + endurance_gap**2 * 0.005
-
-
 
 # Set the basic parameters ---------------
 
@@ -21,6 +20,7 @@ end_date = date.datetime(year=2024, month=10, day=31)
 distance = 42.2
 time = 3.5 * 60
 target_pace = time / distance
+
 
 # Current status
 endurance = 25
@@ -46,6 +46,29 @@ else:
   strength_training = 0
   
 # Flexibility training
+
+
+### Create the plan ----------------------
+
+week = 8
+
+#def create_week(week):
+
+      # Set the endurance training
+      distance_training = endurance + week * endurance_increment
+      distance_speed_training = target_pace
+      duration_distance_training = distance_training * target_pace
+      
+      # Additional endurance training
+      additional_running_distance = week/weeks * 1/2 * distance
+      additional_running_pace = target_pace * (weeks - week) / weeks 
+      
+      
+      # Strength training
+      
+      # 
+      
+
 
 
 
