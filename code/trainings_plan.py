@@ -3,9 +3,27 @@ import numpy as np
 import matplotlib.pyplot as plt
 import datetime as date
 
+
 # Functions --------------------------
 
+class trainings_plan:
+      def __init__(self, distance, pace, sessions):
+           self.distance = distance
+           self.pace = pace 
+           self.sessions = sessions
+      
+      def create_period(self, year, month, day):
+           self.today = date.date.today()
+           self.raceday = date.date(year, month, day)
+           self.duration = date.date.timedelta(self.raceday - self.today)
 
+marathon = trainings_plan(41, 4.5, 5)
+marathon.create_period(year = 2024,
+                       month = 10,
+                       day = 28)
+
+marathon.duration()
+  
 # Function to adjust the current pace for the shorter distance
 def adjust_current_pace(pace, endurance_gap):
   return pace + endurance_gap * 0.005 + endurance_gap**2 * 0.005
