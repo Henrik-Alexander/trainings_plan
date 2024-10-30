@@ -6,16 +6,32 @@ import datetime as date
 
 # Functions --------------------------
 
-class trainings_plan:
+class Training:
       def __init__(self, distance, pace, sessions):
            self.distance = distance
            self.pace = pace 
            self.sessions = sessions
       
-      def create_period(self, year, month, day):
-           self.today = date.date.today()
-           self.raceday = date.date(year, month, day)
-           self.duration = date.date.timedelta(self.raceday - self.today)
+      def create_period(self, race_year, race_month, race_day):
+          self.today = date.date.today()
+          self.raceday = date.date(race_year, race_month, race_day)
+          self.duration = date.timedelta(self.raceday - self.today)
+          if self.duration < 0:
+                 raise ValueError("The race day must be in the future!")
+               
+      def create_training(self):
+            self.schedule = []
+            if self.distance > 10:
+                  self.schedule.append("longrun")
+            if self.pace < 5:
+                  self.schedule.append("intervals")
+            if self.sessions > 3:
+                  self.schedule.append("strength")
+            if len(self.schedule) < self.sessions:
+              for i in 1:(len(self.schedule) - self.sessions):
+                    self.schedule.append("normal run")      
+            
+           
 
 marathon = trainings_plan(41, 4.5, 5)
 marathon.create_period(year = 2024,
@@ -70,7 +86,7 @@ else:
 
 week = 8
 
-#def create_week(week):
+def Training(week):
 
       # Set the endurance training
       distance_training = endurance + week * endurance_increment

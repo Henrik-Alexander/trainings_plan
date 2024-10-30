@@ -4,8 +4,12 @@ import os
 
 # Apply the class -------------------------
 
+# Set the path
+path = "../data"
+files = os.listdir(path)
+
 # Load the data
-training = training_report("../data/activity_17330403407.csv")
+training = training_report(f"{path}/{files[1]}")
 training.clean_data()
 training.summary()
 
